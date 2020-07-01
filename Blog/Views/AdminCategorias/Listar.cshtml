@@ -1,0 +1,36 @@
+﻿@model PWABlog.ViewModels.Admin.AdminCategoriasListarViewModel
+@using PWABlog.ViewModels.Admin
+
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Listagem de Categorias</h3>
+    </div>
+    <div class="card-body">
+        <a class="btn btn-primary mb-3" href="/admin/categorias/criar">Criar nova categoria</a>
+
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (AdminCategoriasCategoria autor in @Model.Categorias)
+            {
+                <tr>
+                    <td>@autor.Id</td>
+                    <td>@autor.Nome</td>
+                    <td>
+                        <a class="btn btn-success btn-xs" href="/admin/categorias/editar/@autor.Id">Editar</a>
+                        <a class="btn btn-danger btn-xs" href="/admin/categorias/remover/@autor.Id">Remover</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+
+    </div>
+</div>

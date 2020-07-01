@@ -1,0 +1,51 @@
+﻿@using PWABlog.ViewModels.Admin
+@model PWABlog.ViewModels.Admin.AdminEtiquetasEditarViewModel
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Edição de etiqueta</h3>
+
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fas fa-minus"></i></button>
+        </div>
+    </div>
+    <div class="card-body">
+        @if (@Model.Erro != null) {
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h5><i class="icon fas fa-ban"></i> Erro!</h5>
+                @Model.Erro
+            </div>
+        }
+
+        <form action="/admin/etiquetas/editar" method="post">
+            <div class="form-group mb-3">
+                <label for="Nome">Nome</label>
+                <input id="Nome" name="Nome" type="text" class="form-control" value="@Model.NomeEtiqueta">
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="IdCategoria">Categoria</label>
+                <select id="IdCategoria" name="IdCategoria" class="form-control">
+                    <option value="">Selecione</option>
+                    @foreach (CategoriaAdminEtiquetas categoria in Model.Categorias) {
+                        @if (@Model.IdCategoriaEtiqueta == categoria.IdCategoria) {
+                            <option selected value="@categoria.IdCategoria">@categoria.NomeCategoria</option>
+                        } else {
+                            <option value="@categoria.IdCategoria">@categoria.NomeCategoria</option>
+                        }
+                    }
+                </select>
+            </div>
+
+            <div class="form-group mb-3">
+                <input type="hidden" name="Id" value="@Model.IdEtiqueta">
+                <button type="submit" class="btn btn-primary btn-block">Confirmar</button>
+                <p class="text-center mt-3">
+                    <a href="/admin/etiquetas">Cancelar</a>
+                </p>
+            </div>
+        </form>
+    </div>
+</div>

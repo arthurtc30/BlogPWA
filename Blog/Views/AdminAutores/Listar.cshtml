@@ -1,0 +1,34 @@
+﻿@using PWABlog.ViewModels.Admin
+@model PWABlog.ViewModels.Admin.AdminAutoresListarViewModel
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Listagem de Autores</h3>
+    </div>
+<div class="card-body">
+    <a class="btn btn-primary mb-3" href="/admin/autores/criar">Criar novo autor</a>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach(AdminAutoresAutor autor in @Model.Autores)
+        {
+            <tr>
+                <td>@autor.Id</td>
+                <td>@autor.Nome</td>
+                <td>
+                    <a class="btn btn-success btn-xs" href="/admin/autores/editar/@autor.Id">Editar</a>
+                    <a class="btn btn-danger btn-xs" href="/admin/autores/remover/@autor.Id">Remover</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+</div>
+</div>

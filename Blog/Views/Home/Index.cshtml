@@ -1,0 +1,101 @@
+﻿@using PWABlog.ViewModels.Home
+@model PWABlog.ViewModels.Home.HomeIndexViewModel
+
+<!-- Conteúdo Principal -->
+<div class="w3-col l8 s12">
+    <!-- Postagens -->
+    @foreach (PostagemHomeIndex postagem in @Model.Postagens)
+    {
+        <div class="w3-card-4 w3-margin w3-white">
+            <img src="https://via.placeholder.com/650x200?text=Imagem da Postagem" alt="@postagem.Titulo" style="width:100%">
+            <div class="w3-container">
+                <h3>
+                    <b>@postagem.Titulo</b>
+                </h3>
+                <h5>
+                    @postagem.Categoria <span class="w3-opacity">@postagem.Data</span>
+                </h5>
+            </div>
+
+            <div class="w3-container">
+                <p>@postagem.Descricao</p>
+                <div class="w3-row">
+                    <div class="w3-col m8 s12">
+                        <p>
+                            <button class="w3-button w3-padding-large w3-white w3-border">
+                                <b>READ MORE »</b>
+                            </button>
+                        </p>
+                    </div>
+                    <div class="w3-col m4 w3-hide-small">
+                        <p>
+                            <span class="w3-padding-large w3-right">
+                                <b>Comentários </b> <span class="w3-tag">@postagem.NumeroComentarios</span>
+                                <!--<b>Comments </b> <span class="w3-badge">2</span>-->
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<!-- Conteúdo Lateral -->
+<div class="w3-col l4">
+    <!-- Categorias -->
+    <div class="w3-card w3-margin">
+        <div class="w3-container w3-padding">
+            <h4>Categorias</h4>
+        </div>
+        <div class="w3-container w3-white">
+            <p>
+                @foreach (CategoriaHomeIndex categoria in @Model.Categorias)
+                {
+                    <span class="w3-tag w3-light-grey w3-margin-bottom">@categoria.Nome</span>
+                }
+            </p>
+        </div>
+    </div>
+    
+    <!-- Etiquetas -->
+    <div class="w3-card w3-margin">
+        <div class="w3-container w3-padding">
+            <h4>Etiquetas</h4>
+        </div>
+        <div class="w3-container w3-white">
+            <p>
+                @foreach (EtiquetaHomeIndex etiqueta in @Model.Etiquetas)
+                {
+                    <span class="w3-tag w3-light-grey w3-margin-bottom">@etiqueta.Nome</span>
+                }
+            </p>
+        </div>
+    </div>
+
+    <!-- Postagens Populares -->
+    <div class="w3-card w3-margin">
+        <div class="w3-container w3-padding">
+            <h4>Postagens Populares</h4>
+        </div>
+        <ul class="w3-ul w3-hoverable w3-white">
+           @foreach (PostagemPopularHomeIndex postagemPopular in @Model.PostagensPopulares) {
+               <li class="w3-padding-16">
+                   <img src="https://via.placeholder.com/75/BBC9E3" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+                   <span class="w3-large">@postagemPopular.Titulo</span><br>
+                   <span>@postagemPopular.Categoria</span>
+               </li>   
+           }
+        </ul>
+    </div>
+
+    <!-- Sobre Mim -->
+    <div class="w3-card w3-margin w3-margin-top">
+        <div class="w3-container w3-white">
+            <h4>
+                <b>Arthur Teixeira</b>
+            </h4>
+            <p>Descrição sobre mim</p>
+        </div>
+    </div>
+</div>

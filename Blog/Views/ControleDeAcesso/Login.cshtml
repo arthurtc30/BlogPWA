@@ -1,0 +1,68 @@
+﻿@model PWABlog.ViewModels.ControleDeAcesso.ControleDeAcessoLoginViewModel
+
+<div class="card">
+    <div class="card-body login-card-body">
+        <p class="login-box-msg">Login</p>
+
+        <!--Checo se houve erro de login, se tiver mostro a mensagem-->
+        @if (@Model.MensagemLogin != null)
+        {
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h5><i class="icon fas fa-ban"></i> Erro de login!</h5>
+                @Model.MensagemLogin
+            </div>
+        }
+        <!--Checo se houve registro, se tiver mostro a mensagem-->
+        @if (@Model.MensagemRegistro != null)
+        {
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h5><i class="icon fas fa-ban"></i> Sucesso!</h5>
+                @Model.MensagemRegistro
+            </div>
+        }
+
+        <!--Redireciono pra página após o login-->
+        <form action="@Url.RouteUrl("controleDeAcesso", new {Action = "Login", RedirectUrl = @Model.Destino})" method="post">
+            <div class="input-group mb-3">
+                <input id="usuario" name="usuario" type="text" class="form-control" placeholder="seunome@mail.com.br">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-envelope"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <input id="senha" name="senha" type="password" class="form-control">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-lock"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8">
+                    <div class="icheck-primary">
+                        <input type="checkbox" id="remember">
+                        <label for="remember">
+                            Lembrar de mim
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <input type="hidden" name="destino" value="@Model.Destino">
+                    <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+                </div>
+            </div>
+        </form>
+
+        <p class="mb-1">
+            <a href="#">Esqueci a senha</a>
+        </p>
+        <p class="mb-0">
+            <a href="@Url.RouteUrl("controleDeAcesso", new {action = "Registrar"})" class="text-center">Registrar novo usuário</a>
+        </p>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+﻿@using PWABlog.ViewModels.Admin
+@model PWABlog.ViewModels.Admin.AdminEtiquetasListarViewModel
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Listagem de Etiquetas</h3>
+
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fas fa-minus"></i></button>
+        </div>
+    </div>
+    <div class="card-body">
+        <a class="btn btn-primary mb-3" href="/admin/etiquetas/criar">Criar nova Etiqueta</a>
+        
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Categoria</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+                @foreach (EtiquetaAdminEtiquetas etiqueta in @Model.Etiquetas) {
+                    <tr>
+                        <td>@etiqueta.Id</td>
+                        <td>@etiqueta.Nome</td>
+                        <td>@etiqueta.NomeCategoria</td>
+                        <td>
+                            <a class="btn btn-default btn-xs" href="/admin/etiquetas/editar/@etiqueta.Id">Editar</a>
+                            <a class="btn btn-danger btn-xs" href="/admin/etiquetas/remover/@etiqueta.Id">Remover</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        
+    </div>
+</div>

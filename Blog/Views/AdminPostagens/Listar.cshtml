@@ -1,0 +1,39 @@
+﻿@using PWABlog.ViewModels.Admin
+@model PWABlog.ViewModels.Admin.AdminPostagemListarViewModel
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Listagem de Postagens</h3>
+    </div>
+    <div class="card-body">
+        <a class="btn btn-primary mb-3" href="/admin/postagens/criar">Criar nova Postagem</a>
+
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titulo</th>
+                <th>Categoria</th>
+                <th>Autor</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (PostagemAdminPostagem postagem in @Model.Postagens)
+            {
+                <tr>
+                    <td>@postagem.Id</td>
+                    <td>@postagem.Titulo</td>
+                    <td>@postagem.Categoria</td>
+                    <td>@postagem.Autor</td>
+                    <td>
+                        <a class="btn btn-success btn-xs" href="/admin/postagens/editar/@postagem.Id">Editar</a>
+                        <a class="btn btn-danger btn-xs" href="/admin/postagens/remover/@postagem.Id">Remover</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+
+    </div>
+</div>
